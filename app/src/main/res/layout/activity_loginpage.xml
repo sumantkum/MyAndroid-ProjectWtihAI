@@ -1,134 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/mobile_screen"
+    android:background="#FFFFFF"
     tools:context=".Loginpage">
 
-    <TextView
+    <!-- 1. Background Image Area (200dp high) -->
+    <ImageView
+        android:id="@+id/iv_railway_background"
         android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/railway_bg_placeholder"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="Railway Themed Background" />
+
+    <!-- 2. Centered Logo over Background -->
+    <ImageView
+        android:id="@+id/iv_company_logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_railway_logo_main"
+        android:background="@drawable/shape_circle_white_bg"
+        android:padding="8dp"
+        android:elevation="4dp"
+        android:contentDescription="Company Logo"
+        app:layout_constraintTop_toTopOf="@+id/iv_railway_background"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_railway_background"
+        app:layout_constraintStart_toStartOf="@+id/iv_railway_background"
+        app:layout_constraintEnd_toEndOf="@+id/iv_railway_background" />
+
+    <!-- NOTE: The iv_railway_logo ID was changed to iv_railway_background
+                to avoid confusion with the new iv_company_logo. -->
+
+    <TextView
+        android:id="@+id/tv_greeting"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="230dp"
-        android:fontFamily="sans-serif-medium"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-black"
         android:text="@string/greet"
-        android:textSize="40dp" />
+        android:textColor="#212121"
+        android:textSize="32sp"
+        app:layout_constraintTop_toBottomOf="@id/iv_railway_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tv_subtitle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Sign in to your account."
-        android:textSize="14dp"
-        android:textColor="#6A6868"
-        android:layout_marginLeft="20dp"
-        />
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:text="Sign in to manage your railway services."
+        android:textColor="#607D8B"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_greeting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Login Form Area -->
+    <EditText
+        android:id="@+id/edUserName"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="32dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/rounded_edit_text"
+        android:hint="Username or e-mail"
+        android:drawableStart="@drawable/person_40px"
+        android:drawablePadding="12dp"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/tv_subtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Social Login Area -->
+    <EditText
+        android:id="@+id/edPassword"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/rounded_edit_text"
+        android:hint="Password"
+        android:drawableStart="@drawable/ic_lock_24"
+        android:drawablePadding="12dp"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/edUserName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/loginBox"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:text="Forgot password?"
+        android:textColor="#03A9F4"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/edPassword"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <EditText
-            android:id="@+id/edUserName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Username or e-mail"
-            android:inputType="text" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginButton"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/rounded_button_primary"
+        android:text="Secure Login"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <EditText
-            android:id="@+id/edPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edUserName"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Password"
-            android:inputType="numberPassword" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edPassword"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
-            android:text="Forgot password?" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/loginButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/button_bg"
-            android:text="Login"
-            android:textColor="@color/white" />
-
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_or_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Or continue with"
+        android:textColor="#757575"
+        app:layout_constraintTop_toBottomOf="@id/loginButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/social_login_area"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_or_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/gplus"/>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginHorizontal="10dp"
-            android:src="@drawable/twitter"/>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/facebook"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_fingerprint_24"
+            android:background="@drawable/social_icon_bg"
+            android:padding="8dp"
+            android:contentDescription="Fingerprint Login"
+            app:tint="#000000" />
 
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="16dp"
+            android:src="@drawable/ic_email_24"
+            android:background="@drawable/social_icon_bg"
+            android:padding="8dp"
+            android:contentDescription="Email Login"
+            app:tint="#000000" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_corporate_24"
+            android:background="@drawable/social_icon_bg"
+            android:padding="8dp"
+            android:contentDescription="Corporate ID Login"
+            app:tint="#000000" />
 
     </LinearLayout>
 
-    <!-- Create Account Text Area -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have account?"
-            android:textSize="13sp"
+            android:text="Don't have an account?"
+            android:textSize="14sp"
+            android:textColor="#757575"
             />
 
         <TextView
             android:id="@+id/createAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create account"
-            android:layout_marginLeft="5dp"
-            android:textSize="13sp"
-            android:textColor="@color/black"
+            android:text="Register Now"
+            android:layout_marginStart="4dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#03A9F4"
             />
-
-
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

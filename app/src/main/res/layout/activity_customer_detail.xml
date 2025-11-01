@@ -2,42 +2,126 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff9e80"
-    android:padding="16dp">
+    android:background="#003366"
+    android:padding="24dp">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:background="@drawable/button_bg"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#1a4773"
+        android:padding="24dp"
+        android:elevation="12dp"
+        android:layout_marginBottom="24dp">
 
-        <TextView android:id="@+id/tvName" style="@style/TextLabel"/>
-        <TextView android:id="@+id/tvEmail" style="@style/TextLabel"/>
-        <TextView android:id="@+id/tvPhone" style="@style/TextLabel"/>
-        <TextView android:id="@+id/tvCompany" style="@style/TextLabel"/>
-        <TextView android:id="@+id/tvAddress" style="@style/TextLabel"/>
-        <TextView android:id="@+id/tvNotes" style="@style/TextLabel"/>
-        <TextView android:id="@+id/tvCreatedDate" style="@style/TextLabel"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Profile Details"
+            android:textColor="#ffcc00"
+            android:paddingLeft="25dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
+
+        <TextView android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textStyle="bold" />
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#4a739b" android:layout_marginBottom="4dp"/>
+
+        <TextView android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#4a739b" android:layout_marginBottom="4dp"/>
+
+        <TextView android:id="@+id/tvPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#4a739b" android:layout_marginBottom="4dp"/>
+
+        <TextView android:id="@+id/tvCompany"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#4a739b" android:layout_marginBottom="4dp"/>
+
+        <TextView android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#4a739b" android:layout_marginBottom="4dp"/>
+
+        <TextView android:id="@+id/tvNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#4a739b" android:layout_marginBottom="4dp"/>
+
+        <TextView android:id="@+id/tvCreatedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="40dp">
 
             <Button
                 android:id="@+id/btnEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="✏️ Edit"
-                android:layout_marginEnd="16dp" />
+                android:textColor="#003366"
+                android:backgroundTint="#ffcc00"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:textSize="16sp"
+                android:elevation="6dp"
+                android:layout_marginEnd="20dp" />
 
             <Button
                 android:id="@+id/btnDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🗑️ Delete" />
+                android:text="🗑️ Delete"
+                android:textColor="#003366"
+                android:backgroundTint="#ffcc00"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:textSize="16sp"
+                android:elevation="6dp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

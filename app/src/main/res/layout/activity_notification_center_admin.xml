@@ -1,35 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ff9e80"
-    android:padding="16dp">
+    android:background="#F0F3F5"
+    tools:context=".NotificationPage">
 
-    <EditText
-        android:id="@+id/etNotificationTitle"
+    <!-- HEADER / APPLICATION TITLE BAR -->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Notification Title" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="#2A4D69"
+        android:text="Emergency Dispatch Panel"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:textStyle="bold"
+        android:elevation="4dp"
+        tools:ignore="RtlSymmetry" />
 
-    <EditText
-        android:id="@+id/etNotificationMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Notification Message"
-        android:minLines="3" />
-
-    <Button
-        android:id="@+id/btnSendNotification"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Send Notification" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNotifications"
+    <!-- CONTENT AREA (with internal padding) -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Notification Title Input -->
+        <EditText
+            android:id="@+id/etNotificationTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Notification Subject (e.g., Delay Alert, Track Closure)"
+            android:minHeight="56dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <!-- Notification Message Input (Multi-line) -->
+        <EditText
+            android:id="@+id/etNotificationMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Detailed message for all station masters and crews..."
+            android:minLines="5"
+            android:gravity="top"
+            android:padding="16dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <!-- Send Button (Primary Action) -->
+        <Button
+            android:id="@+id/btnSendNotification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SEND URGENT BROADCAST"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D9534F"
+            android:textStyle="bold"
+            android:minHeight="56dp"
+            android:layout_marginBottom="24dp"
+            android:textSize="18sp"
+            android:elevation="6dp" />
+
+        <!-- Notification History Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recent Broadcast History"
+            android:textColor="#2A4D69"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Notification History List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingTop="4dp"
+            android:background="#E8EDF1" />
+
+    </LinearLayout>
 
 </LinearLayout>

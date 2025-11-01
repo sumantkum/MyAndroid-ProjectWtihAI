@@ -13,7 +13,10 @@
     <color name="gray">#CAC7C7</color>
     <color name="green">#119917</color>
     <color name="orange">#FF5722</color>
-    <color name="yellow">#FF9800</color>
+    <color name="colorRailwayPrimary">#03A9F4</color>
+    <color name="yellow">#FFEB3B</color>
+
+
 
 
 </resources>

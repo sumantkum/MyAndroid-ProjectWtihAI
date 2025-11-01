@@ -4,16 +4,34 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff9e80"
-    android:padding="16dp">
+    android:background="#003366"
+    android:padding="24dp">
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
+        android:textColor="#ffcc00"
+        android:background="@android:color/transparent"
+        style="?android:attr/borderlessButtonStyle"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@android:drawable/ic_dialog_info"
+        android:tint="#ffcc00"
+        android:scaleType="fitCenter"
+        android:contentDescription="Railway Logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp" />
 
     <EditText
         android:id="@+id/complaintEditText"
@@ -21,42 +39,56 @@
         android:layout_height="wrap_content"
         android:hint="Enter your complaint"
         android:inputType="textMultiLine"
-        android:minLines="3"
-        android:textColor="@color/black"
+        android:minLines="5"
+        android:gravity="top"
+        android:textColor="#ffffff"
+        android:textColorHint="#c0c0c0"
+        android:background="#1a4773"
+        android:padding="18dp"
+        android:elevation="6dp"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/backButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="36dp" />
 
     <Button
         android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Submit"
+        android:textColor="#003366"
+        android:backgroundTint="#ffcc00"
+        android:padding="14dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:elevation="8dp"
         app:layout_constraintTop_toBottomOf="@id/complaintEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/complaintsHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Previous Complaints"
-        android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/submitButton"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="40dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/complaintsRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@id/complaintsHeader"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

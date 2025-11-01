@@ -1,43 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/button_bg"
-    android:padding="16dp">
+    android:padding="18dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    android:background="@drawable/rounded_bg_soft_blue"
+    android:elevation="4dp"> <!-- Reduced elevation for a lighter feel -->
 
+    <!-- Complaint Text (Primary Info - Lighter Railway Blue, Bold) -->
     <TextView
         android:id="@+id/complaintText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:text="Urgent: Signal Failure reported on Line A near Station B."
+        android:textColor="#456985"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Complaint Date (Secondary Info - Soft Gray) -->
     <TextView
         android:id="@+id/complaintDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-
-        android:textColor="@android:color/black"
+        android:text="Reported: 2025-10-23, 11:45 AM"
+        android:textColor="#AAB7C4"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/complaintText"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Feedback Text (Status Indicator - Highlight Green for clarity) -->
     <TextView
         android:id="@+id/feedbackText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-
-        android:textColor="@android:color/black"
-        android:layout_marginTop="8dp"
+        android:text="Status: Dispatch team is en route."
+        android:textColor="#3CB371"
+        android:textStyle="italic"
+        android:layout_marginTop="12dp"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/complaintDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Optional Divider Line (Already light gray) -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@id/feedbackText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

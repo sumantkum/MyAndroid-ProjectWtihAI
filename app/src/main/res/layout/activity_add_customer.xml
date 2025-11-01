@@ -4,78 +4,130 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff9e80"
-    android:padding="16dp">
+    android:background="#F0F0F0"
+    android:padding="24dp">
 
-    <!-- Back Button -->
+    <!-- Railway Logo Placeholder -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/railway_icon"
+        android:contentDescription="Railway Project Logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Page Title for Professional Context -->
+    <TextView
+        android:id="@+id/pageTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Customer Registration"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#2A2A2A"
+        app:layout_constraintTop_toBottomOf="@id/logoImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/backButton"
+        android:layout_marginTop="16dp" />
+
+    <!-- Back Button - Elevated and Styled with Primary Red -->
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#A41A35"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="4dp"
+        app:cornerRadius="8dp"
+        app:layout_constraintTop_toTopOf="@id/pageTitleTextView"
+        app:layout_constraintBottom_toBottomOf="@id/pageTitleTextView"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- First Name -->
+    <!-- First Name Input Field - Constraints updated to link to the new title -->
     <EditText
         android:id="@+id/firstNameEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="First Name"
-        android:textColor="@color/black"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
         android:inputType="textPersonName"
-        app:layout_constraintTop_toBottomOf="@id/backButton"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:elevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/pageTitleTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="32dp" />
 
-    <!-- Last Name -->
+    <!-- Last Name Input Field -->
     <EditText
         android:id="@+id/lastNameEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
         android:hint="Last Name"
         android:inputType="textPersonName"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:elevation="2dp"
         app:layout_constraintTop_toBottomOf="@id/firstNameEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="12dp" />
 
-    <!-- Email -->
+    <!-- Email Input Field -->
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:elevation="2dp"
         app:layout_constraintTop_toBottomOf="@id/lastNameEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="12dp" />
 
-    <!-- Phone -->
+    <!-- Phone Input Field -->
     <EditText
         android:id="@+id/phoneEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Phone"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
         android:inputType="phone"
-        android:textColor="@color/black"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:elevation="2dp"
         app:layout_constraintTop_toBottomOf="@id/emailEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="12dp" />
 
-    <!-- Submit Button -->
+    <!-- Submit Button - Primary Red, Full Width, and Strong Elevation -->
     <Button
         android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Add Customer"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#A41A35"
+        android:elevation="8dp"
+        app:cornerRadius="12dp"
         app:layout_constraintTop_toBottomOf="@id/phoneEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

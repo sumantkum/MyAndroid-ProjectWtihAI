@@ -1,24 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@drawable/button_bg"
     android:layout_height="match_parent"
+    android:background="#F0F3F5"
     tools:context=".MessagePage">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView" android:layout_weight="1"
-            android:layout_width="match_parent" android:layout_height="0dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#2A4D69"
+        android:text="Railway Operations Messages"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:textStyle="bold"
+        android:elevation="4dp"
+        tools:ignore="RtlSymmetry" />
 
-        <LinearLayout android:orientation="horizontal"
-            android:layout_width="match_parent" android:layout_height="wrap_content">
-            <EditText android:id="@+id/etMessage" android:hint="Type a message"
-                android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-            <Button android:id="@+id/btnSend" android:text="Send"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-        </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:background="#F0F3F5" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/etMessage"
+            android:hint="Dispatch a new message or command..."
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:backgroundTint="#E8EDF1"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btnSend"
+            android:text="SEND"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#008CBA"
+            android:textStyle="bold"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
+    </LinearLayout>
+
 </LinearLayout>

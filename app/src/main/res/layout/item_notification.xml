@@ -1,46 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/button_bg"
-    android:padding="8dp">
+    android:background="@drawable/rounded_bg_soft_blue"
+    android:padding="16dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    android:elevation="6dp"> <!-- Increased elevation for a floating, premium look -->
 
+    <!-- 1. Status/Alert Icon (Visual Interest/Highlight) -->
+    <ImageView
+        android:id="@+id/ivStatusIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_railway_badge"
+        android:contentDescription="Urgent Status Indicator"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="#D9534F" />
+
+    <!-- 2. Title (Primary Information - Aligned with Icon) -->
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-
+        android:layout_marginStart="12dp"
+        android:textColor="#2A4D69"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:text="Title" />
+        android:text="Urgent Dispatch: Track 3 Maintenance"
+        app:layout_constraintTop_toTopOf="@id/ivStatusIcon"
+        app:layout_constraintBottom_toBottomOf="@id/ivStatusIcon"
+        app:layout_constraintStart_toEndOf="@id/ivStatusIcon"
+        app:layout_constraintEnd_toStartOf="@id/btnDelete" />
 
+    <!-- 3. Delete Button (Modern Icon-only Action at top right) -->
+    <ImageButton
+        android:id="@+id/btnDelete"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@android:drawable/ic_menu_delete"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Delete"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        app:tint="#8899A6" />
+
+    <!-- 4. Message (Secondary Information - Below Title/Icon area) -->
     <TextView
         android:id="@+id/tvMessage"
-        android:layout_width="match_parent"
-        android:textColor="@color/black"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:textSize="14sp"
-        android:text="Message" />
+        android:textColor="#8899A6"
+        android:text="Train 401 is delayed pending emergency signal repair scheduled for 09:30 AM."
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <LinearLayout
+    <!-- 5. Edit Button (Primary Call to Action - Full-width, Vibrant Blue) -->
+    <Button
+        android:id="@+id/btnEdit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end">
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:text="VIEW/EDIT DETAILS"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#008CBA"
+        app:layout_constraintTop_toBottomOf="@id/tvMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
-            android:id="@+id/btnEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit" />
-
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Delete" />
-
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

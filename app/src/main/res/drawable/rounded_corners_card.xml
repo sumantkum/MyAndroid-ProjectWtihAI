@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Solid white background for the card surface -->
+    <solid android:color="#FFFFFF"/>
+    <!-- Rounded corners for a modern, professional look (12dp is a good, generous radius) -->
+    <corners android:radius="12dp"/>
+</shape>

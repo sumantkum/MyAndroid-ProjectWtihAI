@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- The professional light gray fill color -->
+    <solid android:color="#E8EDF1"/>
+
+    <!-- The subtle border for definition -->
+    <stroke
+        android:width="1dp"
+        android:color="#CCCCCC" />
+
+    <!-- Rounded corners for a modern look -->
+    <corners android:radius="8dp"/>
+
+    <!-- Optional padding inside the EditText -->
+    <padding
+        android:left="4dp"
+        android:top="4dp"
+        android:right="4dp"
+        android:bottom="4dp" />
+</shape>

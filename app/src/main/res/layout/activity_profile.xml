@@ -1,163 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0F3F5"
+    tools:context=".UserProfileActivity">
 
-    android:background="@drawable/button_bg"
-    android:padding="16dp">
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    <!-- HEADER / APPLICATION TITLE BAR - Branding and context -->
     <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Profile"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#2A4D69"
+        android:text="User Profile &amp; Role Access"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:elevation="4dp"
+        tools:ignore="RtlSymmetry" />
 
-    <TextView
-        android:id="@+id/tvFirstNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="First Name:"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+    <!-- Main Content Container (Padded) -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvFirstName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvFirstNameLabel"
-        app:layout_constraintTop_toTopOf="@id/tvFirstNameLabel"
-        android:layout_marginStart="8dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-    <TextView
-        android:id="@+id/tvLastNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Last Name:"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFirstNameLabel" />
+            <!-- Profile Title -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Operational Crew Member Details"
+                android:textColor="#2A4D69"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="24dp" />
 
-    <TextView
-        android:id="@+id/tvLastName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
+            <!-- Profile Data Fields Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/rounded_bg_white"
+                android:padding="20dp"
+                android:elevation="2dp"
+                android:layout_marginBottom="24dp">
 
+                <!-- Helper to simulate a rounded white background drawable -->
+                <!-- Note: The actual 'rounded_bg_white' drawable must be defined separately in your project. -->
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvLastNameLabel"
-        app:layout_constraintTop_toTopOf="@id/tvLastNameLabel"
-        android:layout_marginStart="8dp" />
+                <!-- First Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+                    <TextView
+                        android:id="@+id/tvFirstNameLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="First Name:"
+                        android:textColor="#555555"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tvFirstName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="John"
+                        android:textSize="16sp"
+                        android:textColor="#333333"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvEmailLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email:"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLastNameLabel" />
+                <!-- Last Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+                    <TextView
+                        android:id="@+id/tvLastNameLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Last Name:"
+                        android:textColor="#555555"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tvLastName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Smith"
+                        android:textSize="16sp"
+                        android:textColor="#333333"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvEmailLabel"
-        app:layout_constraintTop_toTopOf="@id/tvEmailLabel"
-        android:layout_marginStart="8dp" />
+                <!-- Email -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+                    <TextView
+                        android:id="@+id/tvEmailLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Email:"
+                        android:textColor="#555555"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tvEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="john.s@railops.com"
+                        android:textSize="16sp"
+                        android:textColor="#333333" />
+                </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvPhoneLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Phone:"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEmailLabel" />
+                <!-- Phone -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+                    <TextView
+                        android:id="@+id/tvPhoneLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Phone:"
+                        android:textColor="#555555"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tvPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="+1 555-555-1234"
+                        android:textSize="16sp"
+                        android:textColor="#333333" />
+                </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvPhone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvPhoneLabel"
-        app:layout_constraintTop_toTopOf="@id/tvPhoneLabel"
-        android:layout_marginStart="8dp" />
+                <!-- Role -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvRoleLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Role:"
+                        android:textColor="#555555"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tvRole"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Train Dispatcher (D-04)"
+                        android:textSize="16sp"
+                        android:textColor="#008CBA"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvRoleLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Role:"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPhoneLabel" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvRole"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvRoleLabel"
-        app:layout_constraintTop_toTopOf="@id/tvRoleLabel"
-        android:layout_marginStart="8dp" />
+            <!-- Logout Button (Primary/Cautionary Action) -->
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LOGOUT"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#D9534F"
+                android:textStyle="bold"
+                android:minHeight="56dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvRoleLabel" />
+            <!-- Back Button (Secondary Action) -->
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Back to Dashboard"
+                android:textColor="#2A4D69"
+                android:backgroundTint="#FFFFFF"
+                android:minHeight="56dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:elevation="2dp"
+                android:layout_gravity="center_horizontal" />
 
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnLogout" />
+            <!-- Progress Bar (Kept for completeness, styled centrally) -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:indeterminateTint="#2A4D69" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

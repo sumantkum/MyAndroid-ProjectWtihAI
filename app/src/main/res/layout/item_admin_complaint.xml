@@ -4,63 +4,115 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:layout_margin="8dp"
-    android:background="@drawable/button_bg"
-    android:elevation="2dp">
+    android:padding="18dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    android:background="@drawable/rounded_bg_white"
+    android:elevation="8dp">
 
+    <!-- Complaint Text (Primary Content - Increased prominence) -->
     <TextView
         android:id="@+id/adminComplaintText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="Complaint Text"
-        android:textColor="@color/black"
-
+        android:textSize="18sp"
+        android:text="Complaint Text Placeholder: Train 404 reported a signal failure near station X."
+        android:textColor="#2A4D69"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Complaint Date (Secondary Info) -->
     <TextView
         android:id="@+id/adminComplaintDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date"
-        android:textColor="@color/black"
-
+        android:text="Reported: 2025-10-23, 10:30 AM"
+        android:textColor="#7D8D9A"
+        android:textSize="12sp"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/adminComplaintText"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Current Feedback Status/Text -->
+    <TextView
+        android:id="@+id/feedbackLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resolution Status:"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/adminComplaintDate"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/feedbackText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="No feedback yet"
-        android:textColor="@color/black"
+        android:text="No dispatch action initiated yet."
+        android:textColor="#D9534F"
+        android:textSize="14sp"
+        android:textStyle="bold|italic"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/feedbackLabel"
+        app:layout_constraintTop_toTopOf="@id/feedbackLabel"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/adminComplaintDate"
+    <!-- Divider Line -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#AAB7C4"
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@id/feedbackText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Feedback Input Area -->
+    <TextView
+        android:id="@+id/feedbackPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Resolution/Feedback:"
+        android:textColor="#2A4D69"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
         android:id="@+id/feedbackEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter feedback"
+        android:hint="Type resolution details here..."
+        android:minLines="3"
+        android:gravity="top|start"
+        android:padding="12dp"
+        android:textSize="14sp"
+        android:background="@drawable/rounded_input_bg"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/feedbackText"
+        app:layout_constraintTop_toBottomOf="@id/feedbackPrompt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Action Button -->
     <Button
         android:id="@+id/submitFeedbackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit Feedback"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#008CBA"
+        android:paddingHorizontal="32dp"
+        android:text="Submit Resolution"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/feedbackEditText"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
