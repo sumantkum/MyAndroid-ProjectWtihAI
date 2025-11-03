@@ -8,9 +8,23 @@
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp"
     android:background="@drawable/rounded_bg_soft_blue"
-    android:elevation="4dp"> <!-- Reduced elevation for a lighter feel -->
+    android:elevation="4dp">
 
-    <!-- Complaint Text (Primary Info - Lighter Railway Blue, Bold) -->
+    <!-- Department Badge (Top-right, Pill-shaped, Railway-themed) -->
+    <TextView
+        android:id="@+id/departmentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Department: OPERATIONS_CONTROL"
+        android:textSize="11sp"
+        android:textColor="@android:color/white"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="4dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Complaint Text (Primary Info) -->
     <TextView
         android:id="@+id/complaintText"
         android:layout_width="0dp"
@@ -19,11 +33,12 @@
         android:text="Urgent: Signal Failure reported on Line A near Station B."
         android:textColor="#456985"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/departmentText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Complaint Date (Secondary Info - Soft Gray) -->
+    <!-- Complaint Date -->
     <TextView
         android:id="@+id/complaintDate"
         android:layout_width="wrap_content"
@@ -35,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@id/complaintText"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Feedback Text (Status Indicator - Highlight Green for clarity) -->
+    <!-- Feedback Text -->
     <TextView
         android:id="@+id/feedbackText"
         android:layout_width="0dp"
@@ -50,7 +65,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Optional Divider Line (Already light gray) -->
+    <!-- Divider Line -->
     <View
         android:layout_width="0dp"
         android:layout_height="1dp"
