@@ -18,14 +18,28 @@ import java.text.SimpleDateFormat
 import java.util.*
 import androidx.activity.enableEdgeToEdge
 import androidx.recyclerview.widget.DiffUtil
+import com.google.firebase.auth.FirebaseAuth
 
-// Data class updated to include feedback
+// ✅ Central list of valid departments (helps normalize/filter)
+private val VALID_DEPARTMENTS = setOf(
+    "TICKETING",
+    "CATERING",
+    "CLEANLINESS",
+    "TRAIN_DELAY",
+    "LOST_AND_FOUND",
+    "MAINTENANCE",
+    "SECURITY",
+    "OTHER"
+)
+
+// Data class updated to include feedback + department (for filtering)
 data class ComplaintWithFeedback(
     val userId: String = "",
     val complaintText: String = "",
     val timestamp: Long = 0,
     val complaintId: String = "",
-    val feedback: String? = null
+    val feedback: String? = null,
+    val department: String = "OTHER"
 )
 
 class AdminComplainArea : AppCompatActivity() {
@@ -33,6 +47,10 @@ class AdminComplainArea : AppCompatActivity() {
     private lateinit var complaintsRecyclerView: RecyclerView
     private lateinit var adminComplaintsAdapter: AdminComplaintsAdapter
     private lateinit var backButton: Button
+
+    // keep references to detach listeners
+    private var complaintsListener: ValueEventListener? = null
+    private var complaintsQuery: Query? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,12 +80,18 @@ class AdminComplainArea : AppCompatActivity() {
             adapter = adminComplaintsAdapter
         }
 
-        // Load all complaints
-        loadAllComplaints()
+        // Load complaints based on current admin role/department
+        loadComplaintsForCurrentAdmin()
 
-        // Set up back button
-        backButton.setOnClickListener {
-            finish()
+        // Back button
+        backButton.setOnClickListener { finish() }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // detach live listener if attached
+        complaintsListener?.let { l ->
+            complaintsQuery?.removeEventListener(l)
         }
     }
 
@@ -77,7 +101,6 @@ class AdminComplainArea : AppCompatActivity() {
             return
         }
 
-        // Update complaint with feedback in Firebase
         database.reference.child("complaints").child(complaint.complaintId)
             .child("feedback").setValue(feedbackText)
             .addOnSuccessListener {
@@ -88,6 +111,66 @@ class AdminComplainArea : AppCompatActivity() {
             }
     }
 
+    // role/department-aware loading
+    private fun loadComplaintsForCurrentAdmin() {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        if (uid == null) {
+            Toast.makeText(this, "Please log in", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val userRef = database.reference.child("users").child(uid)
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snap: DataSnapshot) {
+                val role = (snap.child("role").getValue(String::class.java) ?: "STAFF")
+                    .trim().uppercase(Locale.ROOT)
+
+                // Normalize department to a known value
+                val deptRaw = snap.child("department").getValue(String::class.java) ?: "OTHER"
+                val dept = deptRaw.trim().uppercase(Locale.ROOT).let { d ->
+                    if (d in VALID_DEPARTMENTS) d else "OTHER"
+                }
+
+                // Clean up any previous listener
+                complaintsListener?.let { l -> complaintsQuery?.removeEventListener(l) }
+
+                // 🔁 Load ALL complaints, then filter in code if not ADMIN
+                complaintsQuery = database.reference.child("complaints")
+
+                complaintsListener = object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val all = mutableListOf<ComplaintWithFeedback>()
+                        for (data in snapshot.children) {
+                            val c = data.getValue(ComplaintWithFeedback::class.java)
+                            if (c != null) all.add(c)
+                        }
+
+                        // Filter: if ADMIN → all; else → only same department (case-insensitive)
+                        val visible = if (role == "ADMIN") {
+                            all
+                        } else {
+                            all.filter { it.department.equals(dept, ignoreCase = true) }
+                        }
+
+                        val sorted = visible.sortedByDescending { it.timestamp }
+                        adminComplaintsAdapter.submitList(sorted)
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Toast.makeText(this@AdminComplainArea, "Error loading complaints: ${error.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                complaintsQuery!!.addValueEventListener(complaintsListener as ValueEventListener)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@AdminComplainArea, "Error loading user: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    // (Optional) Old method kept for reference
     private fun loadAllComplaints() {
         database.reference.child("complaints")
             .addValueEventListener(object : ValueEventListener {
