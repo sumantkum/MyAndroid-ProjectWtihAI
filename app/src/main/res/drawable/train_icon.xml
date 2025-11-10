@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A simple placeholder for the profile image, featuring the primary color in a circular shape. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <!-- Outer Circle (Primary Brand Color) -->
+        <shape android:shape="oval">
+            <solid android:color="@color/railway_primary" />
+        </shape>
+    </item>
+    <item
+        android:bottom="30dp"
+        android:left="30dp"
+        android:right="30dp"
+        android:top="30dp">
+        <!-- Inner shape (White icon element) -->
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+</layer-list>

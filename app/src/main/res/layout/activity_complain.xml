@@ -41,7 +41,7 @@
         android:inputType="textMultiLine"
         android:minLines="5"
         android:gravity="top"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:textColorHint="#c0c0c0"
         android:background="#1a4773"
         android:padding="18dp"

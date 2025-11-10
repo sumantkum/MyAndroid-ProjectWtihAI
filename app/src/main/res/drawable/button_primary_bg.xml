@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Defines the solid primary color background with rounded corners for the "CREATE ACCOUNT" button. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/railway_primary" />
+    <corners android:radius="10dp" />
+</shape>

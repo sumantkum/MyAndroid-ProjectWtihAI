@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This is a solid color placeholder. In a real project, this would be a custom PNG/SVG of track lines or a stylized railway logo. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/railway_primary" />
+</shape>
